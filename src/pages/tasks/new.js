@@ -57,7 +57,7 @@ const TaskForm = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/tasks/${router.query.id}`
       );
       const task = await res.json();
-      setForm({ title: task.title, description: task.description });
+      setForm({ title: task[0].title, description: task[0].description });
     } catch (error) {
       console.log(error);
     }

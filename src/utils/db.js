@@ -1,16 +1,11 @@
-import { connect, connection } from "mongoose";
-const conn = {
-  isConnected: false,
-};
-export async function dbConnect() {
-  if (conn.isConnected) return;
-  const db = await connect(process.env.MONGODB_URI);
-  conn.isConnected = db.connections[0].readyState;
-  console.log(db.connection.db.databaseName);
-}
-connection.on("connected", () => {
-  console.log("Connected to MongoDB");
+import { createPool } from "mysql2/promise";
+
+const pool = createPool({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
+  port: process.env.MYSQL_PORT,
 });
-connection.on("error", (err) => {
-  console.log(err);
-});
+//export as object
+export { pool };

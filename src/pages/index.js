@@ -26,13 +26,13 @@ const HomePage = ({ tasks }) => {
                 <div>
                   <button
                     className="btn btn-primary"
-                    onClick={() => router.push(`/tasks/${task._id}`)}
+                    onClick={() => router.push(`/tasks/${task.id}`)}
                   >
                     View
                   </button>{" "}
                   <button
                     className="btn btn-success"
-                    onClick={() => router.push(`/tasks/${task._id}/edit`)}
+                    onClick={() => router.push(`/tasks/${task.id}/edit`)}
                   >
                     Edit
                   </button>
